@@ -47,7 +47,7 @@
     <string name="male">合同</string>
     <string name="female">暂留</string>
     <string name="title_activity_detail">合同详情</string>
-    <string name="call">联系对方</string>
+    <string name="call">编辑</string>
     <string name="sms">删除</string>
     <string name="title_activity_modify">修改信息</string>
     <string name="modify">修改</string>
@@ -61,6 +61,6 @@
         预留\n
         </string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_show">ShowActivity</string>
+    <string name="title_activity_show">照片</string>
 
 </resources>

@@ -7,6 +7,7 @@ import com.kuroi.contract.service.Service;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,11 +18,13 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -56,9 +59,6 @@ public class AddActivity extends ActionBarActivity {
     private EditText remark=null;
     private ImageView image=null;
     private Service service=null;
-    private Button pickDate = null;
-    private Button pickDate2 = null;
-    private Button pickDate3 = null;
     private Calendar c = null;
     private static final int CAPTURE_REQUEST_CODE = 100;
     private String picName="";
@@ -69,18 +69,17 @@ public class AddActivity extends ActionBarActivity {
             setContentView(R.layout.activity_add);
             service = new Service(this);
             init();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            pickDate.setOnClickListener(new View.OnClickListener() {
+            date.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     showDialog(1);
                 }
             });
-            pickDate2.setOnClickListener(new View.OnClickListener() {
+            dateStart.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     showDialog(2);
                 }
             });
-            pickDate3.setOnClickListener(new View.OnClickListener() {
+            dateEnd.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     showDialog(3);
                 }
@@ -129,7 +128,7 @@ public class AddActivity extends ActionBarActivity {
 //        }
     }
     @Override
-    protected Dialog onCreateDialog(int id) {
+    protected Dialog onCreateDialog(int id) {//日期选择
         Dialog dialog = null;
         switch (id) {
             case 1:
@@ -198,11 +197,8 @@ public class AddActivity extends ActionBarActivity {
         cusSigner = (EditText)findViewById(R.id.contract_cusSigner);
         remark = (EditText)findViewById(R.id.contract_remark);
         image = (ImageView)findViewById(R.id.image_view);
-        pickDate = (Button) findViewById(R.id.button);
-        pickDate2 = (Button) findViewById(R.id.button2);
-        pickDate3 = (Button) findViewById(R.id.button3);
     }
-    private Contract getContent(){
+    private Contract getContent(){//获取表单
         Contract contract = new Contract();
         contract.setNumber(number.getText().toString());
         contract.setName(name.getText().toString());

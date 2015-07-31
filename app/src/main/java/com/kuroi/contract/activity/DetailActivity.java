@@ -1,24 +1,20 @@
 package com.kuroi.contract.activity;
 
-import com.kuroi.contract.R;
-import com.kuroi.contract.model.Contract;
-import com.kuroi.contract.service.Service;
-
-import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.net.Uri;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.kuroi.contract.R;
+import com.kuroi.contract.model.Contract;
+import com.kuroi.contract.service.Service;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -71,7 +67,6 @@ public class DetailActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DetailActivity.this, ShowActivity.class);
                 intent.putExtra("picName", contract.getImg());
-                Log.d(ACTIVITY_TAG, contract.getImg());
                 startActivity(intent);
             }
         });

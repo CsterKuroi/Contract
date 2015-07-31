@@ -125,17 +125,16 @@
             android:inputType="text"
             android:textColor="@color/grey_900"
             android:textColorHint="@color/grey_300"
-            android:focusable="false"
-            android:enabled="false"/>
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
+            android:focusable="false" />
+            <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="选择"
-                android:id="@+id/button"
+                android:layout_height="wrap_content"
+                android:src="@drawable/right"
+                android:layout_marginRight="12dp"
+                android:layout_marginEnd="24dp"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="false" />
+                android:layout_alignParentEnd="true" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -248,17 +247,20 @@
                 android:inputType="text"
                 android:textColor="@color/grey_900"
                 android:textColorHint="@color/grey_300"
-                android:focusable="false"
-                android:enabled="false"/>
+                android:focusable="false" />
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="选择"
-                android:id="@+id/button2"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="false" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/right"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/imageView" />
+
+
             </RelativeLayout>
         </LinearLayout>
 
@@ -288,17 +290,19 @@
                 android:inputType="text"
                 android:textColor="@color/grey_900"
                 android:textColorHint="@color/grey_300"
-                android:focusable="false"
-                android:enabled="false"/>
+                android:focusable="false" />
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="选择"
-                android:id="@+id/button3"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="false" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/right"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/imageView2" />
+
             </RelativeLayout>
         </LinearLayout>
 

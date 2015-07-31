@@ -201,6 +201,7 @@ public class DBOperation{
 		Cursor cursor = db.rawQuery("select count(*)from contract",null);
 		cursor.moveToFirst();
 		Long count = cursor.getLong(0);
+		db.close();
 		return count;
 	}
 }

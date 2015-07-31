@@ -41,9 +41,6 @@ public class ModifyActivity extends ActionBarActivity {
     private ImageView image=null;
     private Service service=null;
     private Contract contract=null;
-    private Button pickDate4 = null;
-    private Button pickDate5 = null;
-    private Button pickDate6 = null;
     private Calendar c = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,17 +70,17 @@ public class ModifyActivity extends ActionBarActivity {
             remark.setText(contract.getRemark());
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        pickDate4.setOnClickListener(new View.OnClickListener() {
+        date.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(4);
             }
         });
-        pickDate5.setOnClickListener(new View.OnClickListener() {
+        dateStart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(5);
             }
         });
-        pickDate6.setOnClickListener(new View.OnClickListener() {
+        dateEnd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(6);
             }
@@ -159,9 +156,6 @@ public class ModifyActivity extends ActionBarActivity {
         cusSigner = (EditText)findViewById(R.id.cusSigner);
         remark = (EditText)findViewById(R.id.remark);
         image = (ImageView)findViewById(R.id.image_view);
-        pickDate4 = (Button) findViewById(R.id.button4);
-        pickDate5 = (Button) findViewById(R.id.button5);
-        pickDate6 = (Button) findViewById(R.id.button6);
     }
     private Contract getContent(){
         Contract c = new Contract();
