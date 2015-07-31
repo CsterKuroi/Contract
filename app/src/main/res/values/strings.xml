@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">合同</string>
+    <string name="hello_world">WELCOME</string>
+    <string name="action_about">关于</string>
+    <string name="camera">照相</string>
+    <string name="title_main_activity">合同</string>
+    <string name="title_activity_add">添加合同</string>
+    <string name="number">合同编号</string>
+    <string name="snumber">编号</string>
+    <string name="name">合同标题</string>
+    <string name="sname">标题</string>
+    <string name="phone">联系方式</string>
+    <string name="customer">客户名称</string>
+    <string name="principal">负责人</string>
+    <string name="ourSigner">我方签约人</string>
+    <string name="cusSigner">客户签约人</string>
+    <string name="date">签约日期</string>
+    <string name="sdate">日期</string>
+    <string name="dateStart">生效期</string>
+    <string name="dateEnd">截止期</string>
+    <string name="money">金额</string>
+    <string name="discount">折扣</string>
+    <string name="payment">支付方式</string>
+    <string name="type">合同类型</string>
+    <string name="remark">备注</string>
+    <string name="number_hint">编号（必填）</string>
+    <string name="name_hint">标题（必填）</string>
+    <string name="phone_hint">客户联系方式（必填）</string>
+    <string name="customer_hint">客户（必填）</string>
+    <string name="date_hint">签约日期（必填）</string>
+    <string name="dateStart_hint">生效期</string>
+    <string name="dateEnd_hint">截止期</string>
+    <string name="money_hint">金额（必填）</string>
+    <string name="discount_hint">折扣</string>
+    <string name="payment_hint">支付方式</string>
+    <string name="type_hint">合同类型</string>
+    <string name="principal_hint">负责人（必填）</string>
+    <string name="ourSigner_hint">我方签约人</string>
+    <string name="cusSigner_hint">客户签约人</string>
+    <string name="remark_hint">请输入备注信息</string>
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="add">添加</string>
+    <string name="search_hint">请输入合同标题/编号</string>
+    <string name="male">合同</string>
+    <string name="female">暂留</string>
+    <string name="title_activity_detail">合同详情</string>
+    <string name="call">联系对方</string>
+    <string name="sms">删除</string>
+    <string name="title_activity_modify">修改信息</string>
+    <string name="modify">修改</string>
+    <string name="delete">删除</string>
+    <string name="call_text">编辑</string>
+    <string name="view_text">查看详情</string>
+    <string name="sms_text">删除</string>
+    <string name="title_activity_about">关于</string>
+    <string name="about">关于</string>
+    <string name="about_text">
+        预留\n
+        </string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_show">ShowActivity</string>
+
+</resources>
