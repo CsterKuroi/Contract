@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/number"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <EditText
             android:id="@+id/contract_number"
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <EditText
             android:id="@+id/contract_name"
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/customer"
-            android:textSize="20sp" />
+            android:textSize="17dp" />
 
         <EditText
             android:id="@+id/contract_customer"
@@ -111,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/date"
-            android:textSize="20sp"
+            android:textSize="17dp"
             android:layout_gravity="center_vertical" />
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -151,7 +151,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/principal"
-            android:textSize="20sp" />
+            android:textSize="17dp" />
 
         <EditText
             android:id="@+id/contract_principal"
@@ -177,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/money"
-            android:textSize="20sp" />
+            android:textSize="17dp" />
 
         <EditText
             android:id="@+id/contract_money"
@@ -209,7 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/discount"
-                android:textSize="20sp" />
+                android:textSize="17dp" />
 
             <EditText
                 android:id="@+id/contract_discount"
@@ -234,7 +234,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dateStart"
-                android:textSize="20sp"
+                android:textSize="17dp"
                 android:layout_gravity="center_vertical" />
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -277,7 +277,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dateEnd"
-                android:textSize="20sp"
+                android:textSize="17dp"
                 android:layout_gravity="center_vertical" />
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -320,7 +320,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/type"
-                android:textSize="20sp" />
+                android:textSize="17dp" />
 
             <EditText
                 android:id="@+id/contract_type"
@@ -345,7 +345,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ourSigner"
-                android:textSize="20sp" />
+                android:textSize="17dp" />
 
             <EditText
                 android:id="@+id/contract_ourSigner"
@@ -394,7 +394,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/remark"
-            android:textSize="20sp" />
+            android:textSize="17dp" />
 
         <EditText
             android:id="@+id/contract_remark"

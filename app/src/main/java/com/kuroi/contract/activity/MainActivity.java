@@ -1,27 +1,18 @@
 package com.kuroi.contract.activity;
 
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
-import android.net.Uri;
-import android.os.Bundle;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Intent;
-import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -41,11 +32,19 @@ import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kuroi.contract.R;
 import com.kuroi.contract.model.Contract;
 import com.kuroi.contract.service.Service;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -71,9 +70,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle(R.string.title_main_activity);
         service = new Service(this);
         init();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getContent();
         adapter = new ArrayAdapter<String>(this,R.layout.myspinner,m);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -188,6 +187,7 @@ public class MainActivity extends ActionBarActivity {
         switch(id){
             case OPTION_DIALOG:
                 dialog = createOptionDialog();
+                dialog.setCanceledOnTouchOutside(true);
                 break;
             default:
                 dialog = null;
@@ -292,6 +292,9 @@ public class MainActivity extends ActionBarActivity {
                         }
                     });
                     builder.create().show();
+                    dismissDialog(OPTION_DIALOG);
+                    break;
+                default:
                     dismissDialog(OPTION_DIALOG);
                     break;
             }

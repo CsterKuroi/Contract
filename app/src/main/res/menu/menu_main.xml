@@ -5,13 +5,13 @@
 
     <item
         android:id="@+id/add_contract"
-        android:icon="@drawable/orca_composer_popup_normal"
+        android:icon="@drawable/b1"
         android:title="@string/add"
         android:orderInCategory="1"
         app:showAsAction="ifRoom" />
 
     <item android:id="@+id/camera"
-        android:icon="@drawable/camera_normal"
+        android:icon="@drawable/b2"
         android:title="@string/camera"
         android:orderInCategory="2"
         app:showAsAction="ifRoom" />

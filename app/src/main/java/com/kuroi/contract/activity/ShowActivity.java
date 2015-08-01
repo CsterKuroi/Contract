@@ -3,12 +3,9 @@ package com.kuroi.contract.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Environment;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.kuroi.contract.R;
@@ -21,6 +18,7 @@ public class ShowActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Log.d(ACTIVITY_TAG,"show");
         Intent intent = getIntent();
         String picName= intent.getStringExtra("picName");

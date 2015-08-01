@@ -1,47 +1,23 @@
 package com.kuroi.contract.activity;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.kuroi.contract.R;
 import com.kuroi.contract.model.Contract;
 import com.kuroi.contract.service.Service;
 
-import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.text.InputType;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class AddActivity extends ActionBarActivity {
     private EditText number=null;
@@ -69,6 +45,7 @@ public class AddActivity extends ActionBarActivity {
             setContentView(R.layout.activity_add);
             service = new Service(this);
             init();
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             date.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     showDialog(1);
