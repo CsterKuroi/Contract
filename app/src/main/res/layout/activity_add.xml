@@ -370,7 +370,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cusSigner"
-                android:textSize="20sp" />
+                android:textSize="17sp" />
 
             <EditText
                 android:id="@+id/contract_cusSigner"

@@ -2,6 +2,20 @@
 <items version="2" >
 
     <item
+        jar="D:\AndroidWork\Contract\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="D:\AndroidWork\Contract\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-127a7b092ceff9612c387a23e0d9bdc4a2b0e93c.jar" />
+    </item>
+    <item
+        jar="D:\AndroidWork\Contract\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="D:\AndroidWork\Contract\app\build\intermediates\pre-dexed\debug\classes-1b9ff45d7ee5186632a05e0f9ec171b70cc3087e.jar" />
+    </item>
+    <item
         jar="D:\AndroidWork\Contract\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -9,11 +23,18 @@
         <dex dex="D:\AndroidWork\Contract\app\build\intermediates\pre-dexed\debug\classes-b3ca32feec04b2839046ae6a6c821c74bd864723.jar" />
     </item>
     <item
-        jar="D:\AndroidWork\Contract\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jar="C:\Users\Kuroi\Documents\GitHub\Contract\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Users\Kuroi\Documents\GitHub\Contract\app\build\intermediates\pre-dexed\debug\classes-05c131a21c0d8a2d6b19dd832ae54d89b2ea79f2.jar" />
+    </item>
+    <item
+        jar="C:\Users\Kuroi\Documents\GitHub\Contract\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="D:\AndroidWork\Contract\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-127a7b092ceff9612c387a23e0d9bdc4a2b0e93c.jar" />
+        <dex dex="C:\Users\Kuroi\Documents\GitHub\Contract\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-c9dfdacc21d7babf1fef5ecacffdb660b2b4e0b9.jar" />
     </item>
     <item
         jar="D:\Android SDK\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
@@ -23,11 +44,11 @@
         <dex dex="D:\AndroidWork\Contract\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-04eb15c4553152dc7a92065cd8089ceeed884c98.jar" />
     </item>
     <item
-        jar="D:\AndroidWork\Contract\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jar="C:\Users\Kuroi\Documents\GitHub\Contract\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="D:\AndroidWork\Contract\app\build\intermediates\pre-dexed\debug\classes-1b9ff45d7ee5186632a05e0f9ec171b70cc3087e.jar" />
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="C:\Users\Kuroi\Documents\GitHub\Contract\app\build\intermediates\pre-dexed\debug\classes-e57c08536f5c718af552fdcb514736151179293a.jar" />
     </item>
 
 </items>

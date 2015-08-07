@@ -129,19 +129,26 @@ public class MainActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.add_contract) {
-            Intent intent = new Intent(MainActivity.this, AddActivity.class);
-            startActivity(intent);
+            if(popupWindow.isShowing())
+                popupWindow.dismiss();
+            else
+                popUp();
             return true;
         }
-        if(id == R.id.camera) {
-            Log.d(ACTIVITY_TAG, "open");
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            Uri fileUri = getOutputMediaFileUri(); // create a file to save the image
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-            startActivityForResult(intent, CAPTURE_REQUEST_CODE);
-            return true;
-        }
+//        if(id == R.id.camera) {
+//            Log.d(ACTIVITY_TAG, "open");
+//            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//            Uri fileUri = getOutputMediaFileUri(); // create a file to save the image
+//            intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
+//            startActivityForResult(intent, CAPTURE_REQUEST_CODE);
+//            return true;
+//        }
         return super.onOptionsItemSelected(item);
+    }
+    //显示PopupWindow菜单
+    private void popUp(){
+        //设置位置
+        popupWindow.showAsDropDown(this.findViewById(R.id.add_contract), 0, 2);
     }
     public Uri getOutputMediaFileUri() {
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
@@ -214,10 +221,14 @@ public class MainActivity extends ActionBarActivity {
         popupWindow = new PopupWindow(view, 160, WindowManager.LayoutParams.WRAP_CONTENT);
         List<Map<String, Object>> data = new ArrayList<>();
         Map<String, Object> map = new HashMap<>();
-        map.put("menu_about","关于");
+        map.put("add","新建合同");
         data.add(map);
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("add","照片上传");
+        data.add(map2);
         SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.popup_list_item,
-                new String[]{"menu_about"}, new int[]{R.id.menu_about});
+                new String[]{"add"},
+                new int[]{R.id.add});
         menuListView.setAdapter(adapter);
 
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -225,9 +236,16 @@ public class MainActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        Intent intent = new Intent(MainActivity.this,AboutActivity.class);
+                        Intent intent = new Intent(MainActivity.this, AddActivity.class);
                         startActivity(intent);
                         popupWindow.dismiss();
+                        break;
+                    case 1:
+                        Log.d(ACTIVITY_TAG, "open");
+                        Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        Uri fileUri = getOutputMediaFileUri(); // create a file to save the image
+                        intent2.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
+                        startActivityForResult(intent2, CAPTURE_REQUEST_CODE);
                         break;
                 }
             }
