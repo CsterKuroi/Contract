@@ -165,6 +165,7 @@ public class MainActivity extends ActionBarActivity {
         return Uri.fromFile(mediaFile);
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        popupWindow.dismiss();
         if (requestCode == CAPTURE_REQUEST_CODE) {
             Log.d(ACTIVITY_TAG,"ok");
             switch (resultCode) {
