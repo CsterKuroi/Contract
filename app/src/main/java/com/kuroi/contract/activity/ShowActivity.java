@@ -18,7 +18,6 @@ public class ShowActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Log.d(ACTIVITY_TAG,"show");
         Intent intent = getIntent();
         String picName= intent.getStringExtra("picName");
