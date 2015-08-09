@@ -23,13 +23,12 @@ public class ShowActivity extends ActionBarActivity {
         String picName= intent.getStringExtra("picName");
         Log.d(ACTIVITY_TAG,picName);
         if(new File(picName).isFile()){
-            BitmapFactory.Options option = new BitmapFactory.Options();
+                BitmapFactory.Options option = new BitmapFactory.Options();
             option.inSampleSize = 4;
             Bitmap bm = BitmapFactory.decodeFile(picName,option);
             ImageView pic = (ImageView) findViewById(R.id.show_pic);
             Log.d(ACTIVITY_TAG, "ok");
-            pic.setImageBitmap(bm);}
+            pic.setImageBitmap(bm);
+        }
     }
-
-
 }
