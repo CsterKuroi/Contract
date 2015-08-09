@@ -6,6 +6,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -20,6 +21,8 @@ import com.kuroi.contract.model.Contract;
 import com.kuroi.contract.service.Service;
 
 import java.io.File;
+
+import static com.kuroi.contract.activity.ShowActivity.getExifOrientation;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -67,11 +70,21 @@ public class DetailActivity extends ActionBarActivity {
             cusSigner.setText(contract.getCusSigner());
             remark.setText(contract.getRemark());
             if(new File(contract.getImg()).isFile()){
+                int digree=getExifOrientation(contract.getImg());
+                Bitmap bm;
                 BitmapFactory.Options option = new BitmapFactory.Options();
                 option.inSampleSize = 10;
-                Bitmap bm = BitmapFactory.decodeFile(contract.getImg(),option);
-                Log.d(ACTIVITY_TAG, "sim");
-                image.setImageBitmap(bm);}
+                bm = BitmapFactory.decodeFile(contract.getImg(), option);
+                if (digree != 0) {
+                    // 旋转图片
+                    Matrix m = new Matrix();
+                    m.postRotate(digree);
+                    bm = Bitmap.createBitmap(bm, 0, 0, bm.getWidth(),
+                            bm.getHeight(), m, true);
+                }
+                Log.d(ACTIVITY_TAG, "ok");
+                image.setImageBitmap(bm);
+            }
             Log.d(ACTIVITY_TAG, "3");
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -161,6 +161,7 @@ public class MainActivity extends ActionBarActivity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File mediaFile;
         picName = "IMG_" + timeStamp + ".jpg";
+        Log.d("pn",picName);
         mediaFile = new File(mediaStorageDir.getPath() + File.separator + picName);
         return Uri.fromFile(mediaFile);
     }
@@ -170,7 +171,7 @@ public class MainActivity extends ActionBarActivity {
             Log.d(ACTIVITY_TAG,"ok");
             switch (resultCode) {
                 case Activity.RESULT_OK:
-                    Log.d(ACTIVITY_TAG, "ok1");
+                    Log.d(ACTIVITY_TAG, picName);
                     Contract cc=new Contract();
                     cc.setName("照片模式");
                     cc.setImg(Environment.getExternalStoragePublicDirectory(
@@ -179,10 +180,10 @@ public class MainActivity extends ActionBarActivity {
                     Log.d(ACTIVITY_TAG, picName);
                     break;
                 case Activity.RESULT_CANCELED:
-                    Log.d(ACTIVITY_TAG, "ok3");
+                    Log.d(ACTIVITY_TAG, "nonnnnnnnnnnnnnnnnnnnnn");
                     break;
             }
-            Log.d(ACTIVITY_TAG,"ok4");
+            Log.d(ACTIVITY_TAG,"xxxxxxxxxxxxxxxxxxxxxxxxxx");
         }
     }
     @Override
@@ -245,6 +246,7 @@ public class MainActivity extends ActionBarActivity {
                         Log.d(ACTIVITY_TAG, "open");
                         Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         Uri fileUri = getOutputMediaFileUri(); // create a file to save the image
+                        Log.d("pn",fileUri.toString());
                         intent2.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
                         startActivityForResult(intent2, CAPTURE_REQUEST_CODE);
                         break;
