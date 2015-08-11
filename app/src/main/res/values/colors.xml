@@ -3,7 +3,7 @@
     <color name="primary">@color/orange_500</color>
     <color name="primary_dark">@color/orange_800</color>
     <color name="accent">@color/teal_500</color>
-    <color name="shadow">#88000000</color>
+    <color name="con_shadow">#ff01aff4</color>
     <color name="almost_white">#f0f0f0</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

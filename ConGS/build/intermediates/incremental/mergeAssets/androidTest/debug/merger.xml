@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="debug"><source path="C:\Users\Kuroi\Documents\GitHub\Contract\ConGS\build\intermediates\bundles\debug\assets"><file name="test.json" path="C:\Users\Kuroi\Documents\GitHub\Contract\ConGS\build\intermediates\bundles\debug\assets\test.json"/></source></dataSet><dataSet config="main"><source path="C:\Users\Kuroi\Documents\GitHub\Contract\ConGS\src\androidTest\assets"/></dataSet></merger>

@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
 
     defaultConfig {
         applicationId "com.kuroi.contract"
-        minSdkVersion 15
-        targetSdkVersion 22
+        minSdkVersion 14
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }
@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':ConKLActivity')
+    compile project(':ConGS')
 }

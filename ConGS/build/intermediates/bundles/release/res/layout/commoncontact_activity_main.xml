@@ -1,0 +1,21 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/id_tree"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="#aaa"
+        android:layout_weight="1"
+        android:dividerHeight="1px" >
+    </ListView>
+    <TextView
+        android:id="@+id/id_text"
+        android:layout_weight="8"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout ><!-- From: file:/C:/Users/Kuroi/Documents/GitHub/Contract/ConGS/src/main/res/layout/commoncontact_activity_main.xml -->
