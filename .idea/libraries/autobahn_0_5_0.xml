@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="autobahn-0.5.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/ConKLActivity/lib/autobahn-0.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ConGS/lib/autobahn-0.5.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

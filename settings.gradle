@@ -1,1 +1,1 @@
-include ':app', 'ConKLActivity', 'ConCG', ':ConGS'
+include ':app', 'ConKLActivity', ':ConGS'

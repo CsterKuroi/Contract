@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,25 +23,34 @@ public class ConShowActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_con);
-        ActionBar actionBar=getActionBar();
+        ActionBar actionBar = getActionBar();
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(true);
 //        actionBar.setTitle("      照片");
 
-        Log.d(ACTIVITY_TAG,"show");
+        Log.d(ACTIVITY_TAG, "show");
         Intent intent = getIntent();
-        String picName= intent.getStringExtra("picName");
-        Log.d(ACTIVITY_TAG,picName);
-        if(new File(picName).isFile()){
-                BitmapFactory.Options option = new BitmapFactory.Options();
+        String picName = intent.getStringExtra("picName");
+        Log.d(ACTIVITY_TAG, picName);
+        if (new File(picName).isFile()) {
+            int digree = getExifOrientation(picName);
+            Bitmap bm;
+            BitmapFactory.Options option = new BitmapFactory.Options();
             option.inSampleSize = 4;
-            Bitmap bm = BitmapFactory.decodeFile(picName,option);
+            bm = BitmapFactory.decodeFile(picName, option);
+            if (digree != 0) {
+                // 旋转图片
+                Matrix m = new Matrix();
+                m.postRotate(digree);
+                bm = Bitmap.createBitmap(bm, 0, 0, bm.getWidth(),
+                        bm.getHeight(), m, true);
+            }
+
             ImageView pic = (ImageView) findViewById(R.id.show_pic);
             Log.d(ACTIVITY_TAG, "ok");
             pic.setImageBitmap(bm);
         }
     }
-
     public static int getExifOrientation(String filepath) {
         int degree = 0;
         ExifInterface exif = null;
