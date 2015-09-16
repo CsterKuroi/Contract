@@ -31,7 +31,13 @@ public class ConService {
     public void delete(int id) {
         dao.delete(id);
     }
+    public void delete() {
+        dao.delete();
+    }
     public Long getCount() {
         return dao.getCount();
+    }
+    public int getMax() {
+        return dao.getMax();
     }
 }

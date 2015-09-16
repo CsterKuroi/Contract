@@ -122,7 +122,7 @@ public abstract class CommonContactActivity extends Activity {
             request2.put("cmd", "zuzhijiagouchangyonglianxiren");
             request2.put("time", "0");
             //写死了的一个uid，用于调试
-            request2.put("uid", "1345");
+            request2.put("uid", "101");
             mConnection.sendTextMessage(request2.toString());
         } catch (JSONException e) {
             e.printStackTrace();

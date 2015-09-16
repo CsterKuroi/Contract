@@ -67,5 +67,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_con_cg">ConCGActivity</string>
+    <string name="title_activity_con_pic">ConPicActivity</string>
 
 </resources>

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -20,12 +21,16 @@ import android.widget.Toast;
 
 import com.kuroi.contract.R;
 import com.kuroi.contract.model.Contract;
+import com.kuroi.contract.service.ConDELETE;
+import com.kuroi.contract.service.ConMODIFY;
+import com.kuroi.contract.service.ConModifyCallBack;
 import com.kuroi.contract.service.ConService;
+import com.kuroi.contract.service.ConUPLOAD;
 
 import java.util.Calendar;
 
 
-public class ConModifyActivity extends Activity {
+public class ConModifyActivity extends Activity implements ConModifyCallBack{
 
     private EditText number=null;
     private EditText name=null;
@@ -44,9 +49,13 @@ public class ConModifyActivity extends Activity {
     private ConService service=null;
     private Contract contract=null;
     private Calendar c = null;
+    private ImageView iv11;
+    private ImageView iv12;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_modify_con);
         contract = new Contract();
         service = new ConService(this);
@@ -71,9 +80,9 @@ public class ConModifyActivity extends Activity {
             cusSigner.setText(contract.getCusSigner());
             remark.setText(contract.getRemark());
         }
-        ActionBar actionBar=getActionBar();
-        actionBar.setDisplayShowHomeEnabled(false);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ActionBar actionBar=getActionBar();
+//        actionBar.setDisplayShowHomeEnabled(false);
+//        actionBar.setDisplayHomeAsUpEnabled(true);
 //        actionBar.setTitle("      修改信息");
         customer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -126,6 +135,33 @@ public class ConModifyActivity extends Activity {
         dateEnd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(3);
+            }
+        });
+
+        iv11.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                hintKbTwo();
+                finish();
+            }
+        });
+
+        iv12.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(number.getText().toString().equals(""))
+                    Toast.makeText(ConModifyActivity.this, "编号不能为空", Toast.LENGTH_LONG).show();
+                else if(name.getText().toString().equals(""))
+                    Toast.makeText(ConModifyActivity.this, "标题不能为空", Toast.LENGTH_LONG).show();
+//            else if(customer.getText().toString().equals(""))
+//                Toast.makeText(this, "客户不能为空", Toast.LENGTH_LONG).show();
+                else if(date.getText().toString().equals(""))
+                    Toast.makeText(ConModifyActivity.this, "签约日期不能为空", Toast.LENGTH_LONG).show();
+//            else if(principal.getText().toString().equals(""))
+//                Toast.makeText(this, "负责人不能为空", Toast.LENGTH_LONG).show();
+                else if(money.getText().toString().equals(""))
+                    Toast.makeText(ConModifyActivity.this, "总金额不能为空", Toast.LENGTH_LONG).show();
+                else {
+                    modifyToServer();
+                }
             }
         });
     }
@@ -235,6 +271,9 @@ public class ConModifyActivity extends Activity {
         cusSigner = (EditText)findViewById(R.id.contract_cusSigner);
         remark = (EditText)findViewById(R.id.contract_remark);
         image = (ImageView)findViewById(R.id.image_view);
+        iv11=(ImageView)findViewById(R.id.imageView11);
+        iv12=(ImageView)findViewById(R.id.imageView12);
+
     }
     private Contract getContent(){
         Contract c = new Contract();
@@ -276,14 +315,7 @@ public class ConModifyActivity extends Activity {
             else if(money.getText().toString().equals(""))
                 Toast.makeText(this, "总金额不能为空", Toast.LENGTH_LONG).show();
             else {
-                boolean flag = service.update(getContent());
-                if(flag) {
-                    hintKbTwo();
-                    Toast.makeText(ConModifyActivity.this, "修改成功", Toast.LENGTH_LONG).show();
-                    finish();
-                }
-                else
-                    Toast.makeText(ConModifyActivity.this, "修改失败", Toast.LENGTH_LONG).show();
+                modifyToServer();
             }
             return true;
         }
@@ -294,6 +326,29 @@ public class ConModifyActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+    private void modifyToServer() {
+        ConMODIFY upload = new ConMODIFY(this);
+        String JSONString = upload.modifyJson(getContent());
+        upload.modify(JSONString);
+    }
+
+    public void modifyCallBack(String payload) {
+        if (payload.equals("1")) {
+            boolean flag = service.update(getContent());
+            if(flag) {
+                hintKbTwo();
+                Toast.makeText(this, "修改成功", Toast.LENGTH_LONG).show();
+                finish();
+            }
+            else
+                Toast.makeText(this, "修改失败,请检查网络", Toast.LENGTH_LONG).show();
+
+        }
+        else if (payload.equals("2")) {
+            Toast.makeText(this, "修改失败,请检查网络", Toast.LENGTH_LONG).show();
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if (requestCode == 100) {
@@ -354,4 +409,5 @@ public class ConModifyActivity extends Activity {
             return which;
         }
     }
+    //
 }

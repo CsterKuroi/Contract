@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.ComponentCallbacks;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -22,10 +24,12 @@ import android.widget.Toast;
 import com.kuroi.contract.R;
 import com.kuroi.contract.model.Contract;
 import com.kuroi.contract.service.ConService;
+import com.kuroi.contract.service.ConUPLOAD;
+import com.kuroi.contract.service.ConUploadCallBack;
 
 import java.util.Calendar;
 
-public class ConAddActivity extends Activity {
+public class ConAddActivity extends Activity implements ConUploadCallBack {
     private EditText number=null;
     private EditText name=null;
     private EditText type=null;
@@ -45,15 +49,19 @@ public class ConAddActivity extends Activity {
     private static final int CAPTURE_REQUEST_CODE = 100;
     private String picName="";
     private static final String ACTIVITY_TAG="LogDemo";
+
+    private ImageView iv11;
+    private ImageView iv12;
     @Override
     protected void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(R.layout.activity_add_con);
             service = new ConService(this);
             init();
-        ActionBar actionBar=getActionBar();
-        actionBar.setDisplayShowHomeEnabled(false);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ActionBar actionBar=getActionBar();
+//        actionBar.setDisplayShowHomeEnabled(false);
+//        actionBar.setDisplayHomeAsUpEnabled(true);
         customer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intentcus = new Intent(ConAddActivity.this,
@@ -107,48 +115,35 @@ public class ConAddActivity extends Activity {
                     showDialog(3);
                 }
             });
-//            image.setOnClickListener(new View.OnClickListener() {
-//                public void onClick(View v) {
-//                    Log.d(ACTIVITY_TAG,"cc");
-//                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                    Uri fileUri = getOutputMediaFileUri(); // create a file to save the image
-//                    intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
-//                    startActivityForResult(intent, CAPTURE_REQUEST_CODE);
-//                }
-//                public Uri getOutputMediaFileUri() {
-//                    File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-//                            Environment.DIRECTORY_PICTURES), "Contract");
-//                    if (!mediaStorageDir.exists()) {
-//                        if (!mediaStorageDir.mkdirs()) {
-//                            return null;
-//                        }
-//                    }
-//                    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-//                    File mediaFile;
-//                    picName = "IMG_" + timeStamp + ".jpg";
-//                    mediaFile = new File(mediaStorageDir.getPath() + File.separator + picName);
-//                    return Uri.fromFile(mediaFile);
-//                }
-//            });
-//        }
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == CAPTURE_REQUEST_CODE) {
-//            Log.d(ACTIVITY_TAG,"ok");
-//            switch (resultCode) {
-//                case Activity.RESULT_OK:
-//                    Log.d(ACTIVITY_TAG, "ok1");
-//                    service.save(getContent());
-//                    finish();
-//                    Log.d(ACTIVITY_TAG, picName);
-//                    break;
-//                case Activity.RESULT_CANCELED:
-//                    finish();
-//                    Log.d(ACTIVITY_TAG, "ok3");
-//                    break;
-//            }
-//            Log.d(ACTIVITY_TAG,"ok4");
-//        }
+
+
+        iv11.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                hintKbTwo();
+                finish();
+            }
+        });
+
+        iv12.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(number.getText().toString().equals(""))
+                    Toast.makeText(ConAddActivity.this, "编号不能为空", Toast.LENGTH_LONG).show();
+                else if(name.getText().toString().equals(""))
+                    Toast.makeText(ConAddActivity.this, "标题不能为空", Toast.LENGTH_LONG).show();
+//            else if(customer.getText().toString().equals(""))
+//                Toast.makeText(this, "客户不能为空", Toast.LENGTH_LONG).show();
+                else if(date.getText().toString().equals(""))
+                    Toast.makeText(ConAddActivity.this, "签约日期不能为空", Toast.LENGTH_LONG).show();
+//            else if(principal.getText().toString().equals(""))
+//                Toast.makeText(this, "负责人不能为空", Toast.LENGTH_LONG).show();
+                else if(money.getText().toString().equals(""))
+                    Toast.makeText(ConAddActivity.this, "总金额不能为空", Toast.LENGTH_LONG).show();
+                else {
+                    uploadToServer();
+                }
+            }
+        });
+
     }
     @Override
     protected Dialog onCreateDialog(int id) {//日期选择
@@ -256,9 +251,12 @@ public class ConAddActivity extends Activity {
         cusSigner = (EditText)findViewById(R.id.contract_cusSigner);
         remark = (EditText)findViewById(R.id.contract_remark);
         image = (ImageView)findViewById(R.id.image_view);
+        iv11=(ImageView)findViewById(R.id.imageView11);
+        iv12=(ImageView)findViewById(R.id.imageView12);
     }
     private Contract getContent(){//获取表单
         Contract contract = new Contract();
+        contract.setId(service.getMax()+1);
         contract.setNumber(number.getText().toString());
         contract.setName(name.getText().toString());
         contract.setType(type.getText().toString());
@@ -272,8 +270,7 @@ public class ConAddActivity extends Activity {
         contract.setOurSigner(ourSigner.getText().toString());
         contract.setCusSigner(cusSigner.getText().toString());
         contract.setRemark(remark.getText().toString());
-        contract.setImg(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES) + "/Contract/"+picName);
+        contract.setImg(picName);
         return contract;
     }
     @Override
@@ -298,14 +295,7 @@ public class ConAddActivity extends Activity {
             else if(money.getText().toString().equals(""))
                 Toast.makeText(this, "总金额不能为空", Toast.LENGTH_LONG).show();
             else {
-                boolean flag = service.save(getContent());
-                if(flag) {
-                    hintKbTwo();
-                    Toast.makeText(this, "添加成功", Toast.LENGTH_LONG).show();
-                    finish();
-                }
-                else
-                    Toast.makeText(this, "添加失败", Toast.LENGTH_LONG).show();
+                uploadToServer();
             }
 
             return true;
@@ -326,6 +316,29 @@ public class ConAddActivity extends Activity {
             }
         }
     }
+    private void uploadToServer() {
+        ConUPLOAD upload = new ConUPLOAD(this);
+        String JSONString = upload.changeArrayDateToJson(getContent());
+        upload.up(JSONString);
+    }
+
+    public void uploadCallBack(String payload) {
+        if (payload.equals("1")) {
+            boolean flag = service.save(getContent());
+            if(flag) {
+                hintKbTwo();
+                Toast.makeText(this, "添加成功", Toast.LENGTH_LONG).show();
+                finish();
+            }
+            else
+                Toast.makeText(this, "添加失败,请检查网络", Toast.LENGTH_LONG).show();
+
+        }
+        else if (payload.equals("2")) {
+            Toast.makeText(this, "添加失败,请检查网络", Toast.LENGTH_LONG).show();
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if (requestCode == 100) {
@@ -378,4 +391,5 @@ public class ConAddActivity extends Activity {
             return which;
         }
     }
+    //
 }

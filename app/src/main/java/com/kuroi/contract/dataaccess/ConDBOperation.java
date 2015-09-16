@@ -19,6 +19,7 @@ public class ConDBOperation {
 		SQLiteDatabase db = database.getWritableDatabase();
 		if(contract != null){
 			ContentValues value = new ContentValues();
+			value.put("_id", contract.getId());
 			value.put("number", contract.getNumber());
 			value.put("name", contract.getName());
 			value.put("type", contract.getType());
@@ -196,13 +197,30 @@ public class ConDBOperation {
 			db.close();
 		}
 	}
+	public void delete(){
+			SQLiteDatabase db = database.getWritableDatabase();
+			String sql = "delete from contract";
+			db.execSQL(sql);
+			db.close();
+	}
 	public Long getCount() {
 		SQLiteDatabase db = database.getReadableDatabase();
 		Cursor cursor = db.rawQuery("select count(*)from contract",null);
 		cursor.moveToFirst();
 		Long count = cursor.getLong(0);
+		cursor.close();
 		db.close();
 		return count;
+	}
+
+	public int getMax() {
+		SQLiteDatabase db = database.getReadableDatabase();
+		Cursor cursor = db.rawQuery("select ifnull(max(_id),0) from contract",null);
+		cursor.moveToFirst();
+		int max=cursor.getInt(0);
+		cursor.close();
+		db.close();
+		return max;
 	}
 }
 

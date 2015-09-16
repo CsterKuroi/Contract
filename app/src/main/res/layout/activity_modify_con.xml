@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.ConAddActivity"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:gravity="center_horizontal"
+    android:background="#edf3f5"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#106bb9" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView11"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/conleft" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改合同"
+            android:id="@+id/textView5"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView12"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_action_save" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="#FFFFFF">
+
     <LinearLayout
         android:orientation="vertical"
         android:paddingTop="10dp"
@@ -226,7 +271,7 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="20dp"
-            android:background="@color/grey_300"
+            android:background="#edf3f5"
             />
 
         <LinearLayout
@@ -342,7 +387,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="3dp"
             android:layout_marginTop="3dp"
-            android:orientation="horizontal"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
 
@@ -350,7 +394,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/type_con"
-                android:textSize="17dp" />
+                android:textSize="17dp"
+                android:layout_gravity="center_vertical" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -486,7 +531,8 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="20dp"
-            android:background="@color/grey_300"
+            android:background="#edf3f5"
             />
     </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

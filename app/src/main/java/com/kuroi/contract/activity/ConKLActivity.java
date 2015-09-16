@@ -13,15 +13,16 @@ public class ConKLActivity extends KLMainActivity {
     public String getData() {
         String returnstring = "";
         String returnstring2 = "";
-
-        List<KLNode> all =  mAdapter.getAllNode();
-        for (int i = 0; i < all.size(); i++) {
-            if (all.get(i).isChecked && all.get(i).getId() > 10000) {
-                int j = i - 1;
-                while (all.get(j).getId() > 10000)
-                    j--;
-                returnstring += all.get(j).getName()+" ";
-                returnstring2 +=all.get(i).getName()+" ";
+        if(mAdapter!=null) {
+            List<KLNode> all = mAdapter.getAllNode();
+            for (int i = 0; i < all.size(); i++) {
+                if (all.get(i).isChecked && all.get(i).getId() > 10000) {
+                    int j = i - 1;
+                    while (all.get(j).getId() > 10000)
+                        j--;
+                    returnstring += all.get(j).getName() + " ";
+                    returnstring2 += all.get(i).getName() + " ";
+                }
             }
         }
         Intent intent = new Intent();

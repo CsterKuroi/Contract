@@ -16,6 +16,8 @@ public class Contract {
     private String cusSigner = null;
     private String remark = null;
     private String img = null;
+    private String img2 = null;
+    private String img3 = null;
 
     public Contract() {
         id = 0;
@@ -33,6 +35,8 @@ public class Contract {
         cusSigner = "";
         remark = "";
         img = "";
+        img2 = "";
+        img3 = "";
     }
     public void setId(int id) {
         this.id = id;
@@ -123,5 +127,21 @@ public class Contract {
     }
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getImg2() {
+        return img2;
+    }
+
+    public void setImg2(String img2) {
+        this.img2 = img2;
+    }
+
+    public String getImg3() {
+        return img3;
+    }
+
+    public void setImg3(String img3) {
+        this.img3 = img3;
     }
 }

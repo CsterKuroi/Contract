@@ -10,6 +10,8 @@ import android.media.ExifInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 
 import com.kuroi.contract.R;
@@ -19,19 +21,26 @@ import java.io.IOException;
 
 public class ConShowActivity extends Activity {
     private static final String ACTIVITY_TAG="LogDemo";
+    private ImageView iv15;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_show_con);
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayShowHomeEnabled(false);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ActionBar actionBar=getActionBar();
+//        actionBar.setDisplayShowHomeEnabled(false);
+//        actionBar.setDisplayHomeAsUpEnabled(true);
 //        actionBar.setTitle("      照片");
-
-        Log.d(ACTIVITY_TAG, "show");
+        iv15=(ImageView)findViewById(R.id.imageView15);
+        iv15.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        Log.d(ACTIVITY_TAG,"show");
         Intent intent = getIntent();
-        String picName = intent.getStringExtra("picName");
-        Log.d(ACTIVITY_TAG, picName);
+        String picName= intent.getStringExtra("picName");
+        Log.d(ACTIVITY_TAG,picName);
         if (new File(picName).isFile()) {
             int digree = getExifOrientation(picName);
             Bitmap bm;
@@ -45,12 +54,11 @@ public class ConShowActivity extends Activity {
                 bm = Bitmap.createBitmap(bm, 0, 0, bm.getWidth(),
                         bm.getHeight(), m, true);
             }
-
             ImageView pic = (ImageView) findViewById(R.id.show_pic);
-            Log.d(ACTIVITY_TAG, "ok");
             pic.setImageBitmap(bm);
         }
     }
+
     public static int getExifOrientation(String filepath) {
         int degree = 0;
         ExifInterface exif = null;
@@ -89,4 +97,5 @@ public class ConShowActivity extends Activity {
         }
         return true;
     }
+    //
 }

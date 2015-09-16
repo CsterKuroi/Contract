@@ -55,6 +55,10 @@
             android:name=".activity.ConCGActivity"
             android:label="@string/title_activity_con_cg" >
         </activity>
+        <activity
+            android:name=".activity.ConPicActivity"
+            android:label="@string/title_activity_con_pic" >
+        </activity>
     </application>
 
 </manifest>

@@ -10,7 +10,7 @@ public class ConDBContract extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static String sql =
             "create table contract ("
-                    + "_id integer primary key autoincrement, "
+                    + "_id integer primary key , "
                     + "number text, "
                     + "name text, "
                     + "type text, "
@@ -24,7 +24,9 @@ public class ConDBContract extends SQLiteOpenHelper {
                     + "ourSigner text, "
                     + "cusSigner text, "
                     + "remark text, "
-                    + "img text)";
+                    + "img text"
+                    + "img2 text"
+                    + "img3 text)";
 
     public ConDBContract(Context context) {super(context, DATABASE_NAME, null, DATABASE_VERSION);}
     @Override
